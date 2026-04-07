@@ -2,91 +2,98 @@
 
 ## 📌 Overview
 
-This project implements an **AI-powered Data Analysis Agent** that automates exploratory data analysis (EDA), generates insights, and provides intelligent recommendations for data preprocessing and modeling.
+This project implements a **plug-and-play AI-powered Data Analysis Agent** that automates exploratory data analysis (EDA), generates insights, and produces professional reports.
 
-Unlike traditional EDA scripts, this system simulates a **data analyst's thinking process** by not only analyzing data but also suggesting actionable next steps.
+Unlike traditional EDA scripts, this system simulates a **data analyst’s workflow** — from understanding the dataset to recommending next steps and generating shareable reports.
 
 ---
 
 ## 🚀 Key Features
 
-- 📊 Automated Exploratory Data Analysis (EDA)
-- 🔍 Missing Value Detection
-- 📈 Distribution & Skewness Analysis
-- 🔗 Correlation Detection
-- 🧠 Insight Generation (Human-readable)
-- 📌 Feature Selection Recommendations
-- 🤖 Model Suggestions (Regression / Classification)
-- ⚖️ Data Imbalance Detection
-- 🛠️ Preprocessing Recommendations
+### 🔍 Data Understanding
+
+* 📊 Automatic dataset preview (`head`, `info`, shape)
+* 🧾 Feature type detection (numerical & categorical)
+* ⚠️ Missing value analysis with interpretation
+
+### 🧠 Intelligent Analysis
+
+* 📈 Distribution & skewness analysis
+* 🔗 Correlation detection (strong relationships)
+* 🧠 Human-readable insights generation
+
+### ⚡ Smart System Capabilities
+
+* 🔄 **Plug-and-Play** → works with any CSV dataset
+* 📊 **Large dataset detection**
+* 💡 **Smart sampling suggestion** (performance optimization)
+
+### 🤖 Recommendations Engine
+
+* 📌 Feature selection suggestions
+* 🤖 Model recommendations (Regression / Classification)
+* ⚖️ Data imbalance detection
+* 🛠️ Preprocessing guidance
+
+### 📄 Reporting System (NEW 🔥)
+
+* 📊 Auto-generated **HTML dashboard report**
+* 📈 Embedded visualizations (histograms, heatmaps)
+* 🧠 Insights + recommendations in one place
+* 🎯 Shareable output for stakeholders
 
 ---
 
 ## 🧠 What Makes It Unique?
 
-This project goes beyond basic analysis by acting as an **Agentic AI System**:
+This is not just an EDA tool — it's an **Agentic AI System**:
 
-- Understands dataset structure  
-- Interprets patterns  
-- Generates insights  
-- Recommends actions  
+* Understands dataset structure
+* Adapts to dataset size
+* Interprets patterns
+* Generates insights
+* Recommends actions
+* Produces professional reports
 
-👉 It mimics how a **real data analyst thinks and works**
+👉 It mimics how a **real data analyst thinks, decides, and communicates results**
 
 ---
 
 ## 🏗️ Project Structure
 
+```
 data-analysis-agent/
 │
-
-├── data/
-
-│ └── AirQualityUCI.csv
-
+├── data/                  # Input datasets
 │
-
+├── reports/               # Generated reports
+│   ├── report.html
+│   └── assets/            # Visualizations
+│
 ├── src/
-
-│ ├── data_loader.py # Data loading & cleaning
-
-│ ├── eda.py # Statistical analysis functions
-
-│ ├── insights.py # Insight & recommendation logic
-
-│ ├── agent.py # Main agent orchestration
-
-│ └── init.py
-
+│   ├── data_loader.py     # Data loading & cleaning
+│   ├── eda.py             # Statistical analysis
+│   ├── insights.py        # Insight logic
+│   ├── visualize.py       # Plot generation
+│   ├── report.py          # Report generation
+│   ├── agent.py           # Main agent (pipeline controller)
+│   └── __init__.py
 │
-
-├── app.py # Entry point
-
+├── app.py                 # Entry point (CLI interface)
 ├── requirements.txt
-
 └── README.md
-
+```
 
 ---
 
 ## ⚙️ Tech Stack
 
-- Python 🐍  
-- Pandas  
-- NumPy  
-- Matplotlib  
-- Seaborn  
-- Scikit-learn  
-
----
-
-## 📊 Dataset
-
-- Air Quality Dataset (Sensor-based environmental data)
-- Contains:
-  - Gas concentrations (CO, NOx, etc.)
-  - Temperature, humidity
-  - Time-based readings
+* Python 🐍
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* Scikit-learn
 
 ---
 
@@ -97,12 +104,72 @@ data-analysis-agent/
 ```bash
 git clone <your-repo-link>
 cd data-analysis-agent
+```
 
-### 2. Install dependencies
+### 2. Create virtual environment
 
 ```bash
-pip install -r requirements.txt
+py -m venv venv
+venv\Scripts\activate
+```
 
-### 3. Run the application
+### 3. Install dependencies
+
+```bash
+py -m pip install -r requirements.txt
+```
+
+### 4. Add dataset
+
+Place your CSV file inside the `data/` folder.
+
+---
+
+### 5. Run the application
+
+```bash
 py app.py
+```
 
+---
+
+## 📊 Output
+
+After running, the agent will:
+
+* Analyze your dataset
+* Generate insights & recommendations
+* Create a **dashboard-style report**
+
+👉 Open report:
+
+```bash
+start report.html
+```
+
+---
+
+## 💡 Example Use Cases
+
+* Quick dataset understanding
+* Automated EDA for ML projects
+* Data preprocessing guidance
+* Business insight generation
+* Report generation for stakeholders
+
+---
+
+## 🧠 Future Enhancements
+
+* 📊 Interactive dashboard (Streamlit)
+* 🤖 LLM-based natural language querying
+* 📄 PDF export support
+* 📈 Advanced visual analytics
+
+---
+
+## 📌 Resume Highlight
+
+> Built a plug-and-play AI-powered data analysis agent that performs automated EDA, generates insights, and produces interactive HTML reports with visualizations and intelligent recommendations.
+
+---
