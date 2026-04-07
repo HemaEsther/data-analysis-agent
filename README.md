@@ -64,11 +64,7 @@ This is not just an EDA tool — it's an **Agentic AI System**:
 ```
 data-analysis-agent/
 │
-├── data/                  # Input datasets
-│
-├── reports/               # Generated reports
-│   ├── report.html
-│   └── assets/            # Visualizations
+├── data/                 # Input datasets
 │
 ├── src/
 │   ├── data_loader.py     # Data loading & cleaning
@@ -77,7 +73,7 @@ data-analysis-agent/
 │   ├── visualize.py       # Plot generation
 │   ├── report.py          # Report generation
 │   ├── agent.py           # Main agent (pipeline controller)
-│   └── __init__.py
+│   
 │
 ├── app.py                 # Entry point (CLI interface)
 ├── requirements.txt
@@ -123,7 +119,6 @@ py -m pip install -r requirements.txt
 
 Place your CSV file inside the `data/` folder.
 
----
 
 ### 5. Run the application
 
