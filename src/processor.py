@@ -7,9 +7,9 @@ def process_data(df, target=None):
 
     print("\n Processing dataset...\n")
 
-    # -------------------------
+    
     # 1. Handle Missing Values
-    # -------------------------
+    
     for col in df.columns:
         if col == target:
             continue
@@ -19,15 +19,15 @@ def process_data(df, target=None):
         else:
             df[col] = df[col].fillna(df[col].mode().iloc[0] if not df[col].mode().empty else "Unknown")
 
-    # -------------------------
+    
     # 2. Drop constant columns
-    # -------------------------
+    
     constant_cols = [col for col in df.columns if col != target and df[col].nunique() == 1]
     df = df.drop(columns=constant_cols)
 
-    # -------------------------
+    
     # 3. Encode categorical
-    # -------------------------
+    
     cat_cols = df.select_dtypes(include=['object']).columns
 
     for col in cat_cols:
@@ -39,9 +39,9 @@ def process_data(df, target=None):
         else:
             df = pd.get_dummies(df, columns=[col], drop_first=True)
 
-    # -------------------------
+    
     # 4. Handle skewness
-    # -------------------------
+    
     num_cols = df.select_dtypes(include=['number']).columns
 
     for col in num_cols:
@@ -51,9 +51,9 @@ def process_data(df, target=None):
         if df[col].min() >= 0 and abs(df[col].skew()) > 1:
             df[col] = np.log1p(df[col])
 
-    # -------------------------
+    
     # 5. Handle outliers (IQR)
-    # -------------------------
+    
     for col in num_cols:
         if col == target:
             continue

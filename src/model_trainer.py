@@ -14,9 +14,9 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score, confusion_matrix, classification_report
 
 
-# -------------------------
+
 #  Target Detection
-# -------------------------
+
 def detect_target_column(df):
     priority = ['target', 'label', 'y', 'output']
 
@@ -34,9 +34,9 @@ def detect_target_column(df):
     return df.columns[-1]
 
 
-# -------------------------
+
 #  Problem Type Detection
-# -------------------------
+
 def detect_problem_type(y):
     if y.dtype == "object" or y.dtype.name == "category":
         return "classification"
@@ -49,16 +49,16 @@ def detect_problem_type(y):
     return "regression"
 
 
-# -------------------------
+
 #  Training Pipeline
-# -------------------------
+
 def train_models(df, target_col=None):
 
     print("\n Training Models...\n")
 
-    # -------------------------
+    
     # Clean dataset
-    # -------------------------
+    
     df = df.dropna(axis=1, how='all')
 
     df = df.loc[:, df.nunique() > 1]
@@ -67,9 +67,9 @@ def train_models(df, target_col=None):
         print(" Dataset empty")
         return None
 
-    # -------------------------
+    
     #  FIX: DO NOT override user target
-    # -------------------------
+    
     if target_col is None:
         target_col = detect_target_column(df)
 

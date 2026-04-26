@@ -4,9 +4,9 @@ import csv
 
 def load_data(path):
     try:
-        # -------------------------
+        
         # Detect delimiter
-        # -------------------------
+        
         with open(path, 'r', encoding='utf-8') as f:
             sample = f.read(1024)
             try:
@@ -14,22 +14,22 @@ def load_data(path):
             except:
                 delimiter = ','
 
-        # -------------------------
+        
         # Read CSV
-        # -------------------------
+        
         if delimiter == ';':
             df = pd.read_csv(path, sep=';', decimal=',')
         else:
             df = pd.read_csv(path, sep=delimiter)
 
-        # -------------------------
+        
         # Drop empty columns
-        # -------------------------
+        
         df = df.dropna(axis=1, how='all')
 
-        # -------------------------
+        
         # Clean & convert columns (single pass)
-        # -------------------------
+        
         for col in df.columns:
             if df[col].dtype == 'object':
 

@@ -26,9 +26,9 @@ def detect_data_issues(df, missing, skew, corr):
         print("• No major issues detected")
 
 
-# -------------------------
+
 # OPTIONAL (clean summaries)
-# -------------------------
+
 
 def interpret_missing(missing_dict):
     print("\n Missing Overview")

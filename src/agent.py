@@ -15,49 +15,47 @@ class DataAnalysisAgent:
     def run(self):
         print("STARTING ANALYSIS...\n")
 
-        # -------------------------
+
         #  Preview + Optimization
-        # -------------------------
+
         preview_data(self.df)
         self.df = auto_optimize_dataset(self.df)
 
-        # -------------------------
+
         # Basic Info
-        # -------------------------
+
         rows, cols = get_basic_info(self.df)
         print(f"\nDataset has {rows} rows and {cols} columns")
 
-        # -------------------------
+
         #  Missing
-        # -------------------------
+
         print("\n--- Missing Analysis ---")
         missing = get_missing_info(self.df)
         interpret_missing(missing)
 
-        # -------------------------
+    
         #  Feature Types
-        # -------------------------
+
         print("\n--- Feature Types ---")
         num_cols, cat_cols = get_feature_types(self.df)
         print(f"Numerical: {len(num_cols)}, Categorical: {len(cat_cols)}")
 
-        # -------------------------
+    
         #  Skewness
-        # -------------------------
+    
         print("\n--- Skewness ---")
         skew = get_skewness(self.df, num_cols)
         interpret_skewness(skew)
 
-        # -------------------------
+    
         #  Correlation
-        # -------------------------
+    
         print("\n--- Correlation ---")
         corr = get_correlation(self.df, num_cols)
-        interpret_correlation(corr)
-
-        # -------------------------
+    
         #  Data Issues
-        # -------------------------
+        
         detect_data_issues(self.df, missing, skew, corr)
 
         issues_detected = set()
@@ -76,9 +74,9 @@ class DataAnalysisAgent:
 
         global_risk_summary(issues_detected)
 
-        # -------------------------
+        
         #  Recommendations
-        # -------------------------
+        
         recs = generate_recommendations(self.df)
         recs = add_correlation_recommendations(self.df, recs)
 
@@ -87,9 +85,9 @@ class DataAnalysisAgent:
 
         print_recommendations(recs)
 
-        # -------------------------
+        
         #  MODELING PIPELINE
-        # -------------------------
+        
         original_df = self.df.copy()
 
         try:
@@ -97,9 +95,9 @@ class DataAnalysisAgent:
         except:
             before_score = None
 
-        # -------------------------
+        
         #  FIX: Separate target BEFORE processing
-        # -------------------------
+        
         if self.target_col is None:
             raise ValueError(" Target column must be specified")
 
@@ -116,14 +114,14 @@ class DataAnalysisAgent:
         processed_df = processed_features.copy()
         processed_df[self.target_col] = target_series
 
-        # -------------------------
+        
         #  Train Models
-        # -------------------------
+        
         best_score = train_models(processed_df, self.target_col)
 
-        # -------------------------
+        
         #  Trust Score
-        # -------------------------
+        
         score, level, reasons = calculate_trust_score(
             processed_df,
             self.target_col,
@@ -139,14 +137,14 @@ class DataAnalysisAgent:
             for r in reasons:
                 print(f"  - {r}")
 
-        # -------------------------
+    
         #  Suggestions
-        # -------------------------
+    
         smart_suggestions(best_score, issues_detected)
 
-        # -------------------------
+    
         #  Final Summary
-        # -------------------------
+    
         print("\n==============================")
         print(" FINAL SUMMARY ")
         print("==============================")

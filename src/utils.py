@@ -87,6 +87,6 @@ def smart_suggestions(score, issues):
         print("• Apply feature selection")
 
     if "skew" in issues:
-        print("• Try transformation (log / Box-Cox)")
+        print("• Try transformation (log / Box-Cox)")   
 
     print("• Try advanced models (XGBoost, LightGBM)")

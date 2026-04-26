@@ -43,7 +43,7 @@ def select_target(df):
         print(f"{i}. {col}")
 
     while True:
-        val = input("\nEnter target (name/index) or press Enter for auto: ").strip()
+        val = input("\nEnter target (name/index): ").strip()
 
         if val == "":
             return None
